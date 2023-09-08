@@ -1,0 +1,16 @@
+node_modules
+build
+storybook-static
+
+# Meta
+.idea
+.DS_Store
+*.log
+.env
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/.code-snippets
+.history/
+.yarn-error.log

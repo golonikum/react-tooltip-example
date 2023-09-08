@@ -1,0 +1,71 @@
+{
+  "env": {
+    "browser": true
+  },
+  "extends": ["plugin:import/recommended", "airbnb-typescript", "prettier"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["import", "simple-import-sort", "react-hooks"],
+  "ignorePatterns": ["**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx"],
+  "rules": {
+    "simple-import-sort/exports": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          // Packages. react related packages come first.
+          ["^react", "^@?\\w"],
+          // Internal packages.
+          ["App|index"],
+
+          [
+            "^(store)(/.*|$)",
+            "^(constants)(/.*|$)",
+            "^(styles)(/.*|$)",
+            "^(hooks)(/.*|$)",
+            "^(utils)(/.*|$)",
+            "^(types)(/.*|$)"
+          ],
+
+          // Side effect imports.
+          ["^\\u0000"],
+          // Parent imports. Like ..
+          ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+          // Other relative imports. Put same-folder imports and .
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+          ["^(\\./styled/?)((/.*|$))", "^(\\./types/?)((/.*|$))"]
+        ]
+      }
+    ],
+    "react/jsx-filename-extension": "off",
+    "import/newline-after-import": "error",
+    "import/prefer-default-export": "off",
+    "import/no-named-as-default": "off",
+    "import/no-default-export": "error",
+    "import/no-extraneous-dependencies": "off",
+    "no-param-reassign": ["error", { "props": false }],
+    "react/require-default-props": "off",
+    "react/prop-types": 0,
+    "require-default-props": "off",
+    "no-use-before-define": "off",
+    "prefer-destructuring": "off",
+    "react/no-unescaped-entities": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "class-methods-use-this": "off",
+    "no-underscore-dangle": "off",
+    "curly": ["warn", "all"],
+    "no-nested-ternary": 2,
+    "array-bracket-spacing": "warn",
+    "brace-style": ["warn", "1tbs"],
+    "@typescript-eslint/no-unused-vars": "warn",
+    "arrow-body-style": "warn",
+    "padding-line-between-statements": [
+      "warn",
+      { "blankLine": "always", "prev": "*", "next": "return" },
+      { "blankLine": "always", "prev": "block-like", "next": "*" },
+      { "blankLine": "always", "prev": "*", "next": "block-like" }
+    ]
+  }
+}
